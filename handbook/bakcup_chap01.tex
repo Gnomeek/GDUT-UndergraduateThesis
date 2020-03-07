@@ -1,0 +1,325 @@
+\TeX{} Live中有多种宏包供我们选择，我们用几个常用的宏包来构建我们的论文模板。见\tabref{package}。
+\begin{table}[htbp]
+\begin{center}
+\caption{宏包名称及对应功能}
+\label{tab:package}
+\begin{tabularx}{\linewidth}{Z|Z|Z|Z|Z|Z} \toprule
+宏包 & 功能 & 宏包 & 功能 & 宏包 & 功能 \\\cline{1-6}
+geometry & 版面设置 & fancyhdr &  版式设计 & titlesec & 标题设置\\\cline{1-6}
+titletoc & 目录设置 & graphicx & 插图 & subfig & 图片子标题\\\cline{1-6} 
+float & 浮动体 & array & 数组 & booktabs & 线表格\\\cline{1-6}
+tabularx & 可调列宽表格 & multirow & 跨行表格 & paralist & 列表\\\cline{1-6}
+amsmath amssymb bm & 公式环境 & txfonts & 字体 & ntheorem & 定理\\\cline{1-6}
+xeCJK & 中文支持 & indentfirst & 首行缩进 & natbib & 引用样式\\\cline{1-6}
+hyperref & 超链接 & xcolor & 表格颜色 & listings & 代码\\\cline{1-6}
+fancyvrb & 抄录环境 & algorithm & 算法环境 & & \\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+模板使用命令\verb|\RequirePackage|加载，用法
+
+{\centering {\verb|\RequirePackage[参数1,参数2,参数3......]{宏包}|}\\}
+
+如：
+
+{\centering {\verb|\RequirePackage[center,pagestyles]{titlesec}|}\\}
+
+\section{基本设置}
+\subsection{字体}
+\label{sec:font}
+\TeX{}的字体设置比较麻烦，因此要用到XeCJK宏包。我们定义了几种文字，如\tabref{font}，以便于我们编写使用。同时也支持Adobe公司的字体库。假如运行在Linux下，默认的系统字体不适合书写文档\upcite{linuxfont}，建议使用Adobe公司的字体库。
+\begin{table}[htbp]
+\begin{center}
+\caption{字体设定}
+\label{tab:font}
+\begin{tabularx}{\linewidth}{ZZZZ} \toprule
+字体 & 命令 & Windows 7 & Adobe\\\cline{1-4}
+Times New Roman & \multicolumn{3}{c}{无需设定，\LaTeX{}自带} \\
+宋体 & \verb|\song| & SimSun & Adobe Song Std \\
+黑体 & \verb|\hei| & SimHei & Adobe Heiti Std \\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+用\verb|\setCJKfamilyfont|设置字体的自定义名称，用法
+
+{\centering {\verb|\setCJKfamilyfont{自定名称}{字体名称}|}\\}
+
+如：
+
+{\centering {\verb|\setCJKfamilyfont{kai}{Adobe Kaiti Std}|}\\}
+
+\subsection{字号}
+\label{sec:fontsize}
+\LaTeX{}中的字体大小一般都用pt做单位\upcite{point}，跟我们平时熟悉的在Word中的四号、五号字格式不同，所以可以根据对应关系定义新指令，用来在后面的编写中方便地改变字号，这里仅提供论文要用到的字体大小，其他大小不予给出,如\tabref{fontsize}。
+\begin{table}[hbpt]
+\begin{center}
+\caption{字号设置}
+\label{tab:fontsize}
+\begin{tabularx}{\linewidth}{ZZZZZZZZ}\toprule
+字号 & 大小（pt）& 字号 & 大小（pt）& 字号 & 大小（pt）& 字号 & 大小（pt）\\\cline{1-8}
+二号 & 22pt & 小二 & 18pt & 三号 & 16pt & 四号 & 14pt \\
+小四 & 12pt & 五号 & 10.5pt & 小五 & 9pt & & \\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+用\verb|\newcommand{}|设置字号的自定义名称，用法
+
+{\centering {\verb|\newcommand{命令}{\fontsize{大小}{行距}\selectfont}|}\\}
+
+如：
+
+{\centering {\verb|\newcommand{erhao}{\fontsize{22pt}{\baselineskip}\selectfont}|}\\}
+
+\subsection{中文元素}
+默认的页面元素的英文名，诸如Contents 为目录，Abstract 为摘要等，我们首先将他们一一中文化，需要中文化的元素如\tabref{element}
+\begin{table}[htbp]
+\begin{center}
+\caption{元素}
+\label{tab:element}
+\begin{tabularx}{\linewidth}{ZZZZZZ}\toprule
+元素 & 中文 & 英文 & 元素 & 中文 & 英文 \\\midrule
+目录 & content & 目 录 & 致谢 & 致~谢 & Acknowledgements \\
+公式 & equation & 公式 & 参考文献 & 参~考~文~献 & References \\
+图片 & figure & 图 & 表格 & 表 & table\\
+附录 & Appendix & 附录 & 年月 & 2013年6月 & 2013.6 \\\bottomrule
+\end{tabularx}
+\end{center}
+\end{table}
+
+\section{版式}
+学校规定，学位论文文稿用A4 纸（ 210mm×297mm ）标准大小的白纸双面打印，论文装订后尺寸为标准A4 纸的尺寸，一律在左侧装订，要求装订、剪切整齐，便于使用和保存。
+
+本模板设置上边距30mm，下边距25mm ，左边距30mm和右边距20mm ，页脚顶部到版心距离10mm，到页面底边距离15mm，由于此宏包的页脚高度不计入页边距里，所以，实际的页边距为25mm=10mm+15mm直到比对正确为止，设定如下：
+
+{\centering {\textbackslash geometry\{top=28mm,bottom=15mm,left=30mm,right=20mm,nohead,footskip=10mm\}}\\}
+
+\section{页脚}
+《手册》中的页脚格式为绪论至附录有页脚，模板中设置一个无页脚的空页面和一个有页脚的页面。绪论之前的页面都是用无页脚模式。
+\begin{lstlisting}
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}} %`无页脚`
+\fancypagestyle{mainpage}{
+\fancyhf{}
+\fancyfoot[ER,OR]{\thepage} %`页脚始终在右边`
+} 
+\end{lstlisting}
+
+\section{编写格式}
+当页面设置好之后，就是在论文的不同部分分别调用，一般来说论文类的书籍分为三个matter ，为前言区（前置部分），正文区（主体），后文区（附录），在《手册》中要求，绪论至附录要求有页码，且封面，摘要及目录不计入页码。
+
+首先看前置部分，主要包括封面，摘要，目录等，实现为：
+\begin{lstlisting}
+\renewcommand\frontmatter{%
+    \if@openright\cleardoublepage\else\clearpage\fi
+    \@mainmatterfalse
+	\fancyhf{}
+    \pagestyle{plain}
+}
+\end{lstlisting}
+其中\verb|\@mainmatterfalse|为停止章节计数器，即前面的章节均假如正文的章节计算。
+
+之后为文章的正文区，采用阿拉伯数字编页码：
+\begin{lstlisting}
+\renewcommand\mainmatter{%
+    \if@openright\cleardoublepage\else\clearpage\fi
+    \@mainmattertrue
+    \pagenumbering{arabic}
+    \sihao
+    \def\@tabular{\wuhao[1]\old@tabular} % 之后表格字体使用5号
+    \pagestyle{mainpage}
+  }
+\end{lstlisting}
+其中\verb|\normalsize|为正文的字体、字号、间距等设置，\ref{sec:normalsize}~条将会提到。
+
+附录属于后文区，具体设置见\ref{sec:appendix}~条。
+
+\section{摘要}
+模板为摘要做了一个专门的环境，符合《手册》上的规定。
+\begin{lstlisting}[language=TeX]
+\newenvironment{cabstract}{%
+  \titleformat*{\chapter}{\xiaosan \heiti \filcenter \bfseries}
+  \chapter*{\cabstractname}
+  \xiaosi
+  \@afterheading} %`保留章节标题下的首行段落的空白`
+{\par\vspace{1em}\par}
+\end{lstlisting}
+中文摘要设为不参与排序的节，所以使用了\textbackslash chapter*\{\textbackslash cabstractname\}，中间上方的星号意为不参与排序。由于不需求页码，所以在Thesis.tex文件加载摘要前加入\textbackslash frontmatter。
+
+\section{目录}
+目录用\verb|\tableofcontents|即可以很方便地自动生成。按照《手册》要求，自动生成的目录还不符合格式要求，用titletoc宏包来制定目录的样式。用法：
+
+{\centering {\verb|\titlecontents{标题层次}[左间距]{整体格式}|
+\verb|{标题序号}{标题 内容}{指引线和页码}[下间距]|}\\}
+
+如：
+
+{\centering {\verb|\titlecontents{chapter}[0pt]{\vspace{6bp} \heiti \xiaosi[1]}|
+\verb|{\thecontentslabel\quad}{}{\titlerule*{.}\contentspage}|}\\}
+
+\section{正文部分}
+\subsection{正文标题}
+《手册》规定了正文各级标题的格式，可调用titlesec宏包来设置。用法，
+
+{\centering{\verb|\titleformat{标题层次}{整体格式}{标题 序号}{序号与内容间距}{标题内容}|}\\}
+
+如：
+
+{\centering {\verb|\titleformat{\chapter}{\filcenter \heiti \bfseries \sanhao}{\thechapter}{1em}{}|}\\}
+
+目录的层次深度为条，即第三级，所以模板设置为\textbackslash setcounter\{secnumdepth\}\{3\}。
+\subsection{正文字体}
+\label{sec:normalsize}
+首先确定正文中使用的字体，文档要求正文字体为小四，行距为1.5倍，中文字体为宋体，英文为Times New Roman。
+
+由于大部分人习惯用Word里的行距，所以经过微调后，设置\textbackslash baselinestretch为1.25倍。
+
+\subsection{正文段落}
+文档设定为首行缩进2个字符，这一个命令需要在文档开始时自动执行：
+
+{\centering {\verb|\setlength{\parindent}{2.5em}|}\\}
+2.5em值得是2.5个字符量，由2em经过实际微调而得到。
+
+定义段落间距，段前间距以及段后间距都为0。
+
+{\centering {\verb|\setlength{\parskip}{0bp \@plus .5bp \@minus .5bp}|}\\}
+
+\section{浮动对象}
+浮动对象针对的目标是图片表格，标题为五号字体，图片标题在下，表格标题在上。具体设置:
+\begin{lstlisting}[language=TeX]
+\setlength{\floatsep}{12bp \@plus 2bp \@minus 1bp}
+\setlength{\intextsep}{12bp \@plus 2bp \@minus 1bp}
+\setlength{\textfloatsep}{12bp \@plus 2bp \@minus 1bp}
+\setlength{\@fptop}{0bp \@plus1.0fil}
+\setlength{\@fpsep}{8bp \@plus2.0fil}
+\setlength{\@fpbot}{0bp \@plus1.0fil}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.80}
+\let\old@tabular\@tabular
+\DeclareCaptionLabelFormat{tabularlabel}{{\wuhao \heiti #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{figurelabel}{{\wuhao \song #1~\rmfamily #2}}
+\DeclareCaptionLabelSeparator{floatsong}{\hspace{1em}}
+\DeclareCaptionFont{tabularcap}{\wuhao \bfseries \heiti }
+\DeclareCaptionFont{figurecap}{\wuhao }
+\captionsetup[table]{position=top,belowskip=-0.2em,aboveskip=0.1em,labelformat=tabularlabel,labelsep=floatsong,font=tabularcap}
+\captionsetup[figure]{position=bottom,belowskip=-0.2em,aboveskip=0.1em,labelformat=figurelabel,labelsep=floatsong,font=figurecap}
+\captionsetup[subfloat]{justification=centering}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\thesubtable}{(\alph{subtable})}
+\end{lstlisting}
+
+\section{封面}
+\label{sec:cover}
+封面的组成是两个不浮动的图片（校徽、校名称），加上\textbackslash vspace\{\}间距控制和几行文字组成。其中的图片大小皆符合《手册》给出的大小。而间距控制根据《手册》以及实际生成的封面进行对比微调。直接给出代码：
+
+\begin{lstlisting}[language=TeX]
+\begin{flushleft}
+\hspace{8.5mm}\includegraphics[height=2.19cm,width=2.21cm]{xiaohui.jpg} %`校徽`
+\end{flushleft}
+\begin{center} 
+\includegraphics[height=2.96cm,width=10.56cm]{mingchen.jpg} %`学校名字`
+\end{center}
+\vspace{6.5mm}
+\begin{center}
+{\heiti \yihao {`本科毕业设计（论文）`}}
+\end{center}
+\vspace{20mm}
+\begin{center}
+{\heiti \erhao \textbf{`XXXXXXXXXXXXXXXXXXXXXX`}}
+\end{center}
+\vspace{25mm}
+\begin{center}
+{\sanhao \heiti {`学`\hspace{2em}`院`\hspace{3mm}\dlmu{\textbf{`物理光电工程学院`}}}}\\\vspace{2.5mm}
+{\sanhao \heiti {`专`\hspace{2em}`业`\hspace{3mm}\dlmu{\textbf{`电子科学与技术`}}}}\\\vspace{2.5mm}
+{\sanhao \heiti {`年级班别`\hspace{3mm}\dlmu{\textbf{`XXXXXX`}}}}\\\vspace{2.5mm}
+{\sanhao \heiti {`学`\hspace{2em}`号`\hspace{3mm}\dlmu{\textbf{XXXXXXXX}}}}\\\vspace{2.5mm}
+{\sanhao \heiti {`学生姓名`\hspace{3mm}\dlmu{\textbf{`XX`}}}}\\\vspace{2.5mm}
+{\sanhao \heiti {`指导教师`\hspace{3mm}\dlmu{\textbf{`XX`}}}}
+\end{center}
+\vspace{20mm}
+\begin{center}
+\makeatletter
+\sanhao \heiti {\CJK@today}
+\makeatother
+\end{center}
+\end{lstlisting}
+
+假如需要修改封面，直接在Cover.tex修改即可。
+
+\section{参考文献}
+根据《手册》上的规定，模板为摘要做了一个专门的环境。代码如下：
+
+\begin{lstlisting}[language=TeX]
+\renewenvironment{thebibliography}[1]{%
+  \thispagestyle{emptypage}
+  \chapter*{\bibname}%
+  \addcontentsline{toc}{chapter}{`参考文献`}
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+  {\renewcommand{\makelabel}[1]{##1\hfill}
+    \setlength{\labelsep}{1ex}
+    \setlength{\itemindent}{0pt}
+    \setlength{\leftmargin}{\labelwidth+\labelsep}
+    \addtolength{\itemsep}{-1em}
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy\frenchspacing
+  \clubpenalty4000%
+  \@clubpenalty \clubpenalty
+  \widowpenalty4000%
+  \interlinepenalty4000%
+  \sfcode‘\.\@m
+}
+\end{lstlisting}
+
+根据《手册》中的具体打印实例，在目录中，“参考文献”各个字中间无须加入空格。但在章节标题时需要加入空格。所以使用\textbackslash addcontentsline\{toc\}\{chapter\}\{参考文献\}，以区分章节标题及目录标题。
+
+\section{致谢}
+致谢的要求如“参考文献”。在目录中，各个字中间无须加入空格，但在章节标题时需要加入空格。所以，另外为致谢做了一个环境。代码如下：
+
+\begin{lstlisting}[language=TeX]
+\newenvironment{ack}{%
+  \thispagestyle{emptypage}
+  \chapter*{\ackname}%
+  \addcontentsline{toc}{chapter}{`致谢`}%
+  \xiaos
+  \@mainmatterture
+  \@afterheading
+}
+{\par\vspace{2em}\par}
+\end{lstlisting}
+
+\section{附录}
+\label{sec:appendix}
+最后是附录部分，由于他的章节标题与正文中不一样（不是第几章，而是附录A），同时《手册》中的实际打印效果是“目录中的附录条目不带附录标题内容”同时“附录实际页面中标题既带有附录标签同时带有附录标题内容”。这个设定与\LaTeX{}自动生成的有比较大的出入。所以从新设定了三个计数器以及一个附录环境。
+
+代码如下：
+
+\begin{lstlisting}[language=TeX]
+\newcounter{appx}[chapter]
+\renewcommand{\theappx}{\Alph{appx}}
+\newcommand{\appx}[1]{\refstepcounter{appx}%
+\begin{center}
+\heiti \bfseries \sanhao{\par{`附录`}\textbf{\theappx}\quad#1}
+\end{center}
+\vspace{0.8em}}
+
+\newcounter{appxtab}[appx]
+\renewcommand{\theappxtab}{\theappx\arabic{appxtab}}
+\newcommand{\appxtab}{\refstepcounter{appxtab}\centering \heiti \bfseries {\par{`表`\hspace{0.2em}}\theappxtab}\quad}
+
+\newcounter{appxfig}[appx]
+\renewcommand{\theappxfig}{\theappx\arabic{appxfig}}
+\newcommand{\appxfig}{\refstepcounter{appxfig}\centering \song{\par{`图`\hspace{0.2em}}\theappxfig\quad}}
+
+\newcommand{\appxtoc}[1]{\appx{#1}\par\addcontentsline{toc}{chapter}{`附录`\theappx}}
+
+\newenvironment{appxchp}{%
+\@afterheading%
+\clearpage}{}
+\end{lstlisting}
+
+% 其中包含了附录章节、附录表格、附录图片计数器。\textbackslash appxtoc被定义为附录章的标题，同时为目录添加一条附录目录。《手册》中不要求附录中有节条等多级标题，所以没加入此功能。
