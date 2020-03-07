@@ -1,0 +1,2 @@
+# GDUT-UndegradateThesis
+Latex Template
