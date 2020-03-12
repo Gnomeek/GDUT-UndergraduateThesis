@@ -3,6 +3,8 @@ Latex Template
 
 Now This repo also includes a Word template!(03/13/2020)
 
+**Star/Fork this repo or Share it with your friends can really help me. Thanks a lot.**
+
 ## Latex Part
 ### How to use it
 
@@ -32,4 +34,11 @@ inspired by [repo](https://github.com/Daniel612/gdutthesis)
 ### How to use it decently
 - you can use [Endnote(Paid software)](https://endnote.com/) or [Zotero(Free and Open-Source)](https://www.zotero.org/) to build your reference system. You can refer more decently and get rid of lots of troubles with their help.
 - Though you can still add references manually. In this case, please follow GBT7714 strictly. See document in handbook folder for more information.
+
+## TODO
+
+- [ ] Chinese version readme
+- [ ] 
+
+- [ ] Detailed instruction
 
