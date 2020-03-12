@@ -1,1 +1,1 @@
-Add your references in refs.bib
+Add your references with bibtex format in refs.bib
