@@ -1,5 +1,6 @@
 # GDUT-UndegradateThesis
 Latex Template
+
 Now This repo also includes a Word template!(03/13/2020)
 
 ## Latex Part
@@ -16,10 +17,12 @@ Now This repo also includes a Word template!(03/13/2020)
 - you can get a tutorial on this [site](https://mp.weixin.qq.com/s/E9l9akguR1bOhd-Q4wruCg). This tutorial is on MacOS, how to build LaTex environment is basically no differences between MacOS, *nix and Windows 
 - Tutorial for LaTex Syntax can refer to handbook, which is contributed by the original template improver.
 
-inspired by [repo](https://github.com/Daniel612/gdutthesis)
 
 ### Issues
 - use \subfig rather than \subfigure, issued by [ElenHuo](https://github.com/ElenHuo)
+
+
+inspired by [repo](https://github.com/Daniel612/gdutthesis) 
 
 ## Word Part
 ### How to use it
