@@ -38,7 +38,6 @@ inspired by [repo](https://github.com/Daniel612/gdutthesis)
 ## TODO
 
 - [ ] Chinese version readme
-- [ ] 
 
 - [ ] Detailed instruction
 
