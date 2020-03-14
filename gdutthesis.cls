@@ -16,6 +16,7 @@
 \LoadClass[a4paper,12pt,openany,oneside]{book}
 
 %% Load additional packages and commands.
+\usepackage[toc,page]{appendix}
 \RequirePackage{ifthen,calc}
 \RequirePackage[includefoot]{geometry}
 \RequirePackage{fancyhdr}
@@ -78,7 +79,7 @@
 
 % tabularx 中的 Z 环境，居中自动调整
 \newcolumntype{Z}{>{\centering\arraybackslash}X}
-\renewcommand\arraystretch{0.5}
+\renewcommand\arraystretch{0.6}
 
 %%% 字体与字号
 
@@ -209,6 +210,7 @@
 \newcommand{\appxfig}{\refstepcounter{appxfig}\centering \song{\par{图\hspace{0.2em}}\theappxfig\quad}}
 
 \newcommand{\appxtle}[1]{\appx{#1}\par\addcontentsline{toc}{chapter}{附录\theappx}}
+
 
 \newenvironment{appxchp}{\clearpage\@afterheading}{}
 
@@ -410,6 +412,22 @@
 \newtheorem{problem}{问题}[section]
 \newtheorem{remark}{注释}[section]
 
+
+%%% 代码环境
+\lstset{
+language=Python,
+basicstyle=\small\ttfamily,
+numbers=left,
+numbersep=5pt,
+xleftmargin=20pt,
+frame=tb,
+framexleftmargin=20pt
+}
+
+\renewcommand*\thelstnumber{\arabic{lstnumber}:}
+\renewcommand\lstlistingname{代码}
+\DeclareCaptionFormat{mylst}{\hrule#1#2#3}
+\captionsetup[lstlisting]{format=mylst,labelfont=bf,singlelinecheck=off,labelsep=space}
 
 %%% 封面
 
