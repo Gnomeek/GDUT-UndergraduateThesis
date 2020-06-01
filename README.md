@@ -12,11 +12,33 @@ Now This repo also includes a Word template!(03/13/2020)
 - Put refers in /ref/refs.bib(in BibTex format) 
 - Put your figures in figure folder 
 - You can customize your thesis template by editing gdutthesis.cls(hope you know what are you doing) 
+- There're some baseline stretch problems in con/ack env, use setspace package to solve it, details see below(**important**)
+  - add a line with `\usepackage{setspace}` in main.tex
+  - add `\begin{spacing}{1.0} \end{spacing}` in con/ack.tex
+  ```
+  %!TEX root = ../main.tex
+  \begin{spacing}{1.0}
+  \begin{con}
+  % your content
+  \end{con}
+  \end{spacing}
+  ```
 ### 如何使用
 - 只修改data文件夹下的.tex文件
 - 将BibTex格式的引用文件放置于/ref/refs.bib中
 - 将图片放置于figure目录下
 - 可以通过修改gdutthesis.cls来客制化样式（在你理解你在做些什么的情况下）
+- 结论与致谢的行距配置有问题，请按照如下方法解决
+  - 在main.tex中加入`\usepackage{setspace}`
+  - 在con/ack.tex中开头结尾加入`\begin{spacing}{1.0} \end{spacing}`, 具体样式如下
+  ```
+  %!TEX root = ../main.tex
+  \begin{spacing}{1.0}
+  \begin{con}
+  % 你的内容
+  \end{con}
+  \end{spacing}
+  ```
 ### How to use it decently
 
 - I recommend Sublime and LaTexTools to compile and generate pdf in case using terminal is complicated and indecent
