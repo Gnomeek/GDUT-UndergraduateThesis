@@ -54,6 +54,7 @@ Now This repo also includes a Excellent Thesis template!(15/06/2020)
 - Edit .tex file in tex folder
 - Put figures in figures folder
 - .bib refer unsupported(Please edit excellent-reference.tex in tex folder manually)
+*inspired by [repo](https://github.com/Gnomeek/gdutthesis)*
 
 ## 普通毕业论文LaTex模板部分
 ### 如何使用
