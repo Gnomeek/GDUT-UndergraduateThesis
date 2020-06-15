@@ -1,5 +1,7 @@
 Now This repo also includes a Word template!(13/03/2020)
+
 Now This repo also includes a Excellent Thesis template!(15/06/2020)
+
 **Star/Fork this repo or Share it with your friends can really help me. Thanks a lot.**
 
 ## Normal Thesis Latex Part
