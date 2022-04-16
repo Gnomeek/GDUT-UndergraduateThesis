@@ -4,6 +4,13 @@ Now This repo also includes a Excellent Thesis template!(15/06/2020)
 
 **Star/Fork this repo or Share it with your friends can really help me. Thanks a lot.**
 
+# Referee
+If you are looking for an internship or a full-time job, feel free to reach me via Telegram or Discord.
+Currently I'm working for Bytedance(Shanghai, China). 
+
+[![Telegram](https://img.shields.io/badge/Telegram-Gnomeek-%232CA5E0?style=flat-square&logo=telegram)](https://t.me/Gnomeek)
+[![Discord](https://img.shields.io/badge/Discord-wi1Lchmod777-%235865F2?style=flat-square&logo=discord)](http://discordapp.com/users/946332575939559435)
+
 ## Normal Thesis Latex Part
 ### How to use it 
 
